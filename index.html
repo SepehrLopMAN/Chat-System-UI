@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- 
+        /*/*                   ___   ___     __    __     _   
+            --         |      |   | |   |   |  \  /  |   / \   | \  |         --
+            --         |      |   | |===    |   \/   |  / = \  |  \ |         --
+            --         |____  |___| |       |        | /     \ |   \|         --
+        *\*\
+     -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body id="body">
+    <div class="container">
+        <!-- Add New Contact/Chat -->
+        <div id="modal" class="modal" style="display: none;">
+    
+            <div class="modal-content">
+                <span class="close-modal" id="close_modal">×</span>
+                <center><h2>New Contact</h2></center>
+                <div class="new-contact-photo">
+                    <div>
+                        <i id="new_cont_photo" class="fas fa-user-circle " style="display: block;"></i>
+                        <span style="background-color: #00d0ff;cursor: pointer;" onclick="contPhotoColor('#00d0ff');"></span>
+                        <span style="background-color: red;cursor: pointer;" onclick="contPhotoColor('red');"></span>
+                        <span style="background-color: #bd8300;cursor: pointer;" onclick="contPhotoColor('#bd8300');"></span>
+                        <span style="background-color: #3cff00;cursor: pointer;" onclick="contPhotoColor('#3cff00');"></span>
+                        <span style="background-color: wheat;cursor: pointer;" onclick="contPhotoColor('wheat');"></span>
+                        <span style="background-color: #ff7b00;cursor: pointer;" onclick="contPhotoColor('#ff7b00');"></span>
+                    </div>
+                </div>
+
+                <div >              
+                  <label for="contact_name_inp">Name: </label>
+                  <input placeholder="Required *" class="txt-input" type="text"" id="contact_name_inp" style="width: 80%;float: none;">
+                </div>
+
+                <div>              
+                    <label for="contact_sname_inp">Surname: </label>
+                    <input placeholder="Required *" class="txt-input" type="text" id="contact_sname_inp" style="width: 80%;float: none;">
+                </div>
+                <div>              
+                    <label for="contact_id_inp">ID/Number: </label>
+                    <input placeholder="Numbers Only (optional)..." class="txt-input" type="number" id="contact_id_inp" style="width: 80%;float: none;-moz-appearance:textfield;">
+                </div>
+
+                <div style="width: 50%;margin: 20px auto;">
+                    <input type="button" value="Add / Creat" id="add_btn" onclick="addNewContact();">
+                </div>
+
+            </div>
+    
+        </div>
+
+        <div id="contact_select" class="contact-select-div">
+
+                <!-- Contacts/Chats Section -->
+                <div class="chat-bar">
+                    <div id="new_contact" class="new-contact-icon"><i class="far fa-plus-square fa-lg"></i></div>
+                    <div class="chat-bar-txt">chats</div>
+                </div>
+                
+                <div class="contacts">
+
+                    
+
+
+                        <div id="contact0" class="current-contact" onclick="showChat(0)">
+                            <div class="contact-photo">
+                                <div>
+                                    <i class="fas fa-user-circle fa-3x"></i>
+                                </div>
+                            </div>
+                            <div class="contact-name">
+                                <div>John Doe</div>
+                            </div>
+                            <div class="recent-pv-pm current-recent-msg" id="last_PM0">
+                                Awesome!
+                            </div>
+                        </div>
+                   
+
+                </div>
+
+
+        </div>
+        <div id="chat_section" class="chat-sec">
+            
+            
+                <!-- Main Chatroom/PV Section -->
+                <div id="conversation" class="conversation-section">    
+                    <div id="chat0" class="chat current-chat">
+                        <div class="outgoing-pm"> <span>What you guys want to do tomorrow ?</span></div>
+                        <div class="incoming-pm"> <span>How about a Hike?</span></div>
+                        <div class="outgoing-pm"> <span>That sound great!</span></div>
+                        <div class="incoming-pm chat-bot"> <span>Awesome!</span></div>
+                    </div>
+                </div>
+                <div class="outgoing-msg-section">
+                    <div class="txt-bar">
+                        <div>
+                           <input placeholder="Message" id="msg_input" class="txt-input" type="text" name="" id=""/>
+                           <div onclick="sendPM()" role="button" class="send-btn">
+                                <i class="fa-1x fas fa-arrow-circle-right"></i>
+                            </div> 
+                        </div>
+                        
+
+                    </div> 
+                    <div  id="keyboard" class="on-scr-kb"> 
+                        <div class="kb-row">
+                            <button id="key0" onclick="onSCRkbVal('`','~');">`</button>
+                            <button id="key1" onclick="onSCRkbVal('1','!');">1</button>
+                            <button id="key2" onclick="onSCRkbVal('2','@');">2</button>
+                            <button id="key3" onclick="onSCRkbVal('3','#');">3</button>
+                            <button id="key4" onclick="onSCRkbVal('4','$');">4</button>
+                            <button id="key5" onclick="onSCRkbVal('5','%');">5</button>
+                            <button id="key6" onclick="onSCRkbVal('6','^');">6</button>
+                            <button id="key7" onclick="onSCRkbVal('7','&');">7</button>
+                            <button id="key8" onclick="onSCRkbVal('8','*');">8</button>
+                            <button id="key9" onclick="onSCRkbVal('9','(');">9</button>
+                            <button id="key10" onclick="onSCRkbVal('0',')');">0</button>
+                            <button id="key11" onclick="onSCRkbVal('-','_');">-</button>
+                            <button id="key12" onclick="onSCRkbVal('=','+');">=</button>
+                            <button id="backsp_btn" style="flex-basis: 80px;"> <i class="fas fa-backspace"></i></button>
+                        </div>
+                        <div class="kb-row">
+                            <button id="key13" onclick="onSCRkbVal('q','Q');">q</button>
+                            <button id="key14" onclick="onSCRkbVal('w','W');">w</button>
+                            <button id="key15" onclick="onSCRkbVal('e','E');">e</button>
+                            <button id="key16" onclick="onSCRkbVal('r','R');">r</button>
+                            <button id="key17" onclick="onSCRkbVal('t','T');">t</button>
+                            <button id="key18" onclick="onSCRkbVal('y','Y');">y</button>
+                            <button id="key19" onclick="onSCRkbVal('u','U');">u</button>
+                            <button id="key20" onclick="onSCRkbVal('i','I');">i</button>
+                            <button id="key21" onclick="onSCRkbVal('o','O');">o</button>
+                            <button id="key22" onclick="onSCRkbVal('p','P');">p</button>
+                            <button id="key23" onclick="onSCRkbVal('[','{');">[</button>
+                            <button id="key24" onclick="onSCRkbVal(']','}');">]</button>
+                            <button id="key25" onclick="onSCRkbVal('\\','|');">\</button>
+                        </div>
+                        <div class="kb-row">
+                            <button id="key26" onclick="onSCRkbVal('a','A');">a</button>
+                            <button id="key27" onclick="onSCRkbVal('s','S');">s</button>
+                            <button id="key28" onclick="onSCRkbVal('d','D');">d</button>
+                            <button id="key29" onclick="onSCRkbVal('f','F');">f</button>
+                            <button id="key30" onclick="onSCRkbVal('g','G');">g</button>
+                            <button id="key31" onclick="onSCRkbVal('h','H');">h</button>
+                            <button id="key32" onclick="onSCRkbVal('j','J');">j</button>
+                            <button id="key33" onclick="onSCRkbVal('k','K');">k</button>
+                            <button id="key34" onclick="onSCRkbVal('l','L');">l</button>
+                            <button id="key35" onclick="onSCRkbVal(';',':');">;</button>
+                            <button id="key36" onclick="onSCRkbVal(39,34);ChangeHTML(39,34);">'</button>
+                            <button id="enter_btn" onclick="sendPM()" style="flex-basis: 120px;">Enter</button>
+                        </div>
+                        <div class="kb-row">
+                            <button id="shift_btn" onclick="ToggleShift()" style="flex-basis: 120px;">SHIFT</button>
+                            <button id="key37" onclick="onSCRkbVal('z','Z');">z</button>
+                            <button id="key38" onclick="onSCRkbVal('x','X');">x</button>
+                            <button id="key39" onclick="onSCRkbVal('c','C');">c</button>
+                            <button id="key40" onclick="onSCRkbVal('v','V');">v</button>
+                            <button id="key41" onclick="onSCRkbVal('b','B');">b</button>
+                            <button id="key42" onclick="onSCRkbVal('n','N');">n</button>
+                            <button id="key43" onclick="onSCRkbVal('m','M');">m</button>
+                            <button id="key44" onclick="onSCRkbVal(',','<');">,</button>
+                            <button id="key45" onclick="onSCRkbVal('.','>');">.</button>
+                            <button id="key46" onclick="onSCRkbVal('/','?');">/</button>
+                        </div>
+                        <div class="kb-row">
+                            <button id="space_btn" onclick="onSCRkbVal(' ',' ');" style="flex-basis:500px;">Space</button>
+                            <button id="close_kb_btn" onclick="hideKB();"><i class="far fa-caret-square-down"></i></button>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script type="text/javascript">
+        window.onclick = function(event) {
+        if (event.target == modal) {
+          $("#modal").fadeOut("0.6s");
+          }
+        }
+        $("#close_modal").click(() => { $("#modal").fadeOut("0.6s");});
+        $("#new_contact").click(() => { $("#modal").fadeIn("0.6s");});
+        </script>
+</body>
+</html>

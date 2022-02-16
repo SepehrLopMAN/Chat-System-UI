@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans Condensed", Verdana, Arial;
+  height: 100vh;
+  font-style: normal;
+  color: #bd8300;
+}
+.container {
+  margin: auto;
+  position: absolute;
+  background-color: black;
+  min-width: 1000px;
+  min-height: 600px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  z-index: 2;
+  overflow: auto;
+  padding: 50px 0px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: calc(100% - 100px);
+  color: #bd8300;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  background-color: black;
+  padding: 50px;
+  border: 1px solid #bd8300;
+  width: 40%;
+}
+
+.close-modal {
+  position: absolute;
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #555555;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.new-contact-photo {
+  text-align: center;
+}
+.new-contact-photo > div > i {
+  font-size: 100px;
+  color: #00d0ff;
+}
+
+.new-contact-photo > div span {
+  margin-top: 10px;
+  margin-right: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+.new-contact-photo > div span:hover {
+  filter: brightness(80%);
+}
+
+label {
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.red-border {
+  border: 1.5px solid red !important;
+}
+#add_btn {
+  width: 100%;
+  font-size: 16px;
+  margin: auto;
+  height: 30px;
+  border-radius: 20px;
+  border: none;
+  color: #000;
+  background-color: #bd8300;
+  float: none !important;
+  margin: 20px auto auto auto;
+}
+
+#add_btn:hover {
+  background-color: #bd8300a0;
+}
+
+.contact-select-div {
+  width: 25%;
+  float: left;
+  height: 100%;
+  border-right: 2px double #bd8300;
+  border-radius: 10px;
+}
+.chat-sec {
+  height: 100%;
+  width: calc(75% - 5px);
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  right: 0;
+}
+.chat-bar {
+  position: sticky;
+  top: 0px;
+  width: calc(100%);
+  background-color: black;
+  z-index: 1;
+  float: left;
+  border-bottom: 2.8px double #bd8300;
+  border-radius: 8px;
+  height: 50px;
+}
+.chat-bar > div {
+  background-color: black;
+  position: absolute;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 16px;
+}
+.chat-bar-txt {
+  width: 80%;
+  right: 0;
+  text-transform: uppercase;
+}
+.new-contact-icon {
+  width: 20%;
+  cursor: pointer;
+}
+.new-contact-icon > i {
+  transition: 0.6s;
+}
+.new-contact-icon:hover > i {
+  transform: scale(1.2) rotate(90deg);
+}
+.contacts {
+  margin-top: 53px;
+  width: calc(100% - 4px);
+  height: calc(100% - 54px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.contacts > div {
+  position: relative;
+  width: calc(100% - 3px);
+  border-radius: 5px;
+  height: 80px;
+  border-bottom: 2px solid #bd8300;
+}
+.contacts > div:hover {
+  background-color: #556b2f66;
+  cursor: pointer;
+}
+.current-contact {
+  background-color: #333333a0;
+}
+.current-contact:hover {
+  background-color: #333333a0 !important;
+}
+
+.contact-photo {
+  width: 30%;
+  height: 100%;
+  float: left;
+}
+
+.contact-photo > div {
+  width: 50px;
+  height: 50px;
+  padding: 15px 0;
+  color: #00d0ff;
+  margin: auto;
+}
+
+:is(.contact-name, .recent-pv-pm) {
+  width: 70%;
+  float: left;
+}
+.contact-name {
+  height: 40px;
+  color: #ffb300;
+  font-weight: bold;
+  font-size: 19px;
+}
+:is(.contact-name > div, .recent-pv-pm > div) {
+  padding-top: 12px;
+  text-align: left;
+}
+.recent-pv-pm {
+  height: calc(100% - 45px);
+  margin-top: 5px;
+  font-size: 10px;
+  color: aliceblue;
+}
+.conversation-section {
+  height: -webkit-fill-available;
+  width: 100%;
+  float: left;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.chat {
+  bottom: 0px;
+  display: block;
+}
+:is(.incoming-pm, .outgoing-pm) {
+  display: flex;
+}
+.outgoing-pm {
+  justify-content: right;
+}
+.incoming-pm {
+  justify-content: left;
+}
+:is(.incoming-pm > span, .outgoing-pm > span) {
+  border-radius: 25px;
+  display: inline-block;
+  margin: 1%;
+  max-width: 30%;
+  padding: 1rem;
+  font-size: 13px;
+  text-align: left;
+}
+.outgoing-pm > span {
+  background-color: royalblue;
+  color: #000;
+  float: right;
+}
+.incoming-pm > span {
+  background-color: #fff;
+  color: #000;
+  float: left;
+}
+
+.outgoing-msg-section {
+  height: auto;
+  bottom: 0;
+  padding: 5px;
+}
+.txt-bar {
+  position: sticky;
+  float: right;
+  width: calc(100% - 10px);
+  top: 5px;
+}
+
+.txt-bar > div {
+  float: left;
+  height: 50px;
+  width: 100%;
+}
+.txt-input {
+  margin: 5px auto;
+  float: left;
+  display: block;
+  width: calc(98% - 52px - 0.75rem);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 25px;
+  transition: box-shadow 0.35s ease-in-out;
+}
+.txt-input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #bd8300;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(189 131 0 / 25%);
+}
+
+.send-btn {
+  cursor: pointer;
+  margin: 5px;
+  float: left;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #bd8300f5;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+}
+.send-btn:hover {
+  background-color: #bd8300a0;
+}
+
+.on-scr-kb {
+  display: none;
+  margin-top: 50px;
+  height: 300px;
+}
+.kb-row > button {
+  text-align: center;
+  margin: 5px;
+  border: 1px solid #bd8300;
+  color: wheat;
+  background: black;
+  flex-basis: 40px;
+  height: 40px;
+}
+:is(.kb-row > button:active, .shift-active) {
+  background-color: #fff;
+  color: #000;
+}
+.kb-row {
+  justify-content: center;
+  display: none;
+  padding: 5px 10px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff30;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffb300;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #bd8300;
+}
